@@ -1,4 +1,5 @@
 from Vehiculo import *
+import random as rn
 ###############################################
 # import numpy as np
 # arreglo_vehiculos = np.array([])
@@ -34,6 +35,38 @@ def buscarVehiculo(lista_vehiculo):
     if flag == False:
         print("no existe el vehiculo")
 
+def certificado(lista_vehiculo):
+    patente = input("ingrese patente:")
+    flag=False
+    for vehiculo in lista_vehiculo:
+        if patente == vehiculo.patente:
+            flag = True
+            print("1) Certificado Inscripcion")
+            print("2) Certificado contaminantes")
+            print("3) Certificado multas")
+            try:
+                op_cert= int(input("Seleccione"))
+                match op_cert:
+                    case 1:
+                        print("Certificado Inscripcion")                        
+                    case 2:
+                        print("Certificado contaminantes")
+                    case 3:
+                        print("Certificado multas")
+                print("Datos del Vehiculo")
+                print(f"Patente:{vehiculo.patente}")
+                print(f"Tipo:{vehiculo.tipo}")
+                print(f"Marca:{vehiculo.marca}")
+                print(f"Precio:{vehiculo.precio}")
+                alea = rn.randint(1500,3500)
+                print(f"Precio ${alea}")
+                break
+            except BaseException as errr:
+                print(f"Error:{errr}")
+            
+    if flag == False:
+        print("no existe el vehiculo")
+
 
 ciclo = True
 while ciclo:
@@ -56,6 +89,7 @@ while ciclo:
                 buscarVehiculo(lista_vehiculo)
             case 3:
                 print("Certificado")
+                certificado(lista_vehiculo)
             case 4:
                 print("Salir")
                 ciclo=False
